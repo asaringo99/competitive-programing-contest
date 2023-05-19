@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std ;
+#define fast_input_output ios::sync_with_stdio(false); cin.tie(nullptr);
+// #pragma GCC target("avx2")
+// #pragma GCC optimize("O3")
+#pragma GCC target("avx")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+typedef long long ll ;
+typedef long double ld ;
+typedef pair<ll,ll> P ;
+typedef tuple<ll,ll,ll> TP ;
+#define chmin(a,b) a = min(a,b)
+#define chmax(a,b) a = max(a,b)
+#define bit_count(x) __builtin_popcountll(x)
+#define gcd(a,b) __gcd(a,b)
+#define lcm(a,b) a / gcd(a,b) * b
+#define rep(i,n) for(int i = 0 ; i < n ; i++)
+#define rrep(i,a,b) for(int i = a ; i < b ; i++)
+#define repi(it,S) for(auto it = S.begin() ; it != S.end() ; it++)
+#define pt(a) cout << a << endl
+#define DEBUG(...) ; cout << #__VA_ARGS__ << endl ; for(auto x : {__VA_ARGS__}) cout << x << "  " ; cout << endl ;
+#define DEBUG_LIST(...) cout << #__VA_ARGS__ << endl ; DEBUG_REP(__VA_ARGS__) ;
+#define DEBUG_REP(V) cout << "{ " ; repi(itr,V) cout << *itr << ", " ; cout << "}" << endl ;
+#define debug(a) cout << #a << " " << a << endl
+#define endl "\n"
+
+int z ;
+
+void solve(){
+    int n;
+    ll m;
+    cin >> n >> m;
+    vector<ll> A(n), B(n);
+    vector<P> C(n);
+    vector<vector<ll>> X(2,vector<ll>(1,0));
+    ll sum = 0;
+    rep(i,n) cin >> A[i], sum += A[i];
+    rep(i,n) cin >> B[i];
+    if(sum < m){
+        cout << -1 << endl;
+        return;
+    }
+    rep(i,n){
+        C[i] = {A[i],B[i]};
+    }
+    sort(C.begin(),C.end(),greater<P>());
+    rep(i,n){
+        auto [a,b] = C[i];
+        if(b == 1){
+            X[0].push_back(a);
+            int s = X[0].size();
+            X[0][s-1] += X[0][s-2];
+        }
+        if(b == 2) {
+            X[1].push_back(a);
+            int s = X[1].size();
+            X[1][s-1] += X[1][s-2];
+        }
+    }
+    int res = 1e9, ans = 1e9;
+    rep(i,X[0].size()){
+        ll val = m - X[0][i];
+        if(val <= 0) {
+            chmin(res,i);
+            continue;
+        }
+        auto it = lower_bound(X[1].begin(),X[1].end(),val);
+        if(it == X[1].end()) continue;
+        int cnt = it - X[1].begin();
+        chmin(res,i+2*cnt);
+    }
+    cout << res << endl;
+}
+
+int main(){
+    fast_input_output
+    cin >> z ;
+    rep(i,z) solve();
+}
