@@ -19,28 +19,13 @@ typedef tuple<ll,ll,ll> TP ;
 #define endl "\n"
 
 void solve(){
-    int n, m;
-    string S, T;
-    cin >> S >> T;
-    n = S.size();
-    m = T.size();
-    vector<int> A(n);
-    vector<int> B(m);
-    rep(i,n) A[i] = S[i] - '0';
-    rep(i,m) B[i] = T[i] - '0';
-    sort(all(B),greater<int>());
-    int b = 0;
-    rep(i,n){
-        if(b == m) continue;
-        if(A[i] < B[b]){
-            A[i] = B[b];
-            b++;
-        }
-    }
-    for(int u : A) cout << u; cout << endl;
+    int n;
+    cin >> n;
 }
 
 int main(){
     fast_io
-    solve();
+    int z;
+    cin >> z;
+    rep(i,z) solve();
 }

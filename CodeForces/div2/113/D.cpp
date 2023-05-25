@@ -18,54 +18,14 @@ typedef tuple<ll,ll,ll> TP ;
 #define all(a) a.begin(), a.end()
 #define endl "\n"
 
-ll n, k, h;
-vector<tuple<ll,ll,ll>> A;
-vector<int> ans;
-
-bool f(ld x){
-    ll v = h * k;
-    int m = k - 1;
-    vector<int> res(k);
-    rep(i,n){
-        auto[w,t,id] = A[i];
-        ld tim = (ld)v / t;
-        if(tim <= x){
-            v -= h;
-            res[m--] = id + 1;
-        }
-        if(v == 0) {
-            ans = res;
-            return true;
-        }
-    }
-    return false;
-}
-
 void solve(){
-    cin >> n >> k >> h;
-    A = vector<tuple<ll,ll,ll>>(n);
-    vector<ll> B(n), C(n);
-    rep(i,n) cin >> B[i];
-    rep(i,n) cin >> C[i];
-    rep(i,n) A[i] = {B[i],C[i],i};
-    sort(all(A), greater<tuple<ll,ll,ll>>());
-    // rep(i,n){
-    //     auto[w,t,id] = A[i];
-    //     cout << w << " " << t << " " << id << endl;
-    // }
-    ld lef = 0, rig = 2e9;
-    int cnt = 0;
-    while(cnt < 200){
-        ld mid = (lef + rig) / 2;
-        if(f(mid)) rig = mid;
-        else lef = mid;
-        cnt++;
-    }
-    // cout << rig << endl;
-    for(int u : ans) cout << u << " "; cout << endl;
+    int n;
+    cin >> n;
 }
 
 int main(){
     fast_io
-    solve();
+    int z;
+    cin >> z;
+    rep(i,z) solve();
 }

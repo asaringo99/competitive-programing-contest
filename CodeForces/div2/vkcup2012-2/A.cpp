@@ -19,14 +19,15 @@ typedef tuple<ll,ll,ll> TP ;
 #define endl "\n"
 
 void solve(){
-    int n, k;
-    cin >> n >> k;
-    
+    int n, a, b;
+    cin >> n >> a >> b;
+    vector<int> A(n);
+    rep(i,n) cin >> A[i];
+    sort(all(A));
+    cout << A[b] - A[b-1] << endl;
 }
 
 int main(){
     fast_io
-    int z;
-    cin >> z;
-    rep(i,z) solve();
+    solve();
 }
