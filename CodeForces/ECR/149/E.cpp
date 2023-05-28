@@ -147,7 +147,8 @@ modint permutation(ll n , ll r){
 void init(){ f() ; g() ; }
 
 modint dp[20][1<<20];
-vector<int> X[30];
+bool used[20][1<<20];
+ll C[20];
 
 void solve(){
     init();
@@ -155,27 +156,51 @@ void solve(){
     cin >> n;
     vector<int> A(1<<n);
     rep(i,1<<n) cin >> A[i], A[i]--;
+    int a = -1, b = -2;
+    rep(i,1<<n){
+        if(A[i] == 0) a = i / (1 << (n-1));
+        if(A[i] == 1) b = i / (1 << (n-1));
+    }
+    if(a == b){
+        cout << 0 << endl;
+        return;
+    }
     rep(i,n){
-        if(A[i] == -1){
+        C[i] = (1 << (n - 1 - i));
+    }
+    rep(i,1<<n){
+        if(A[i] == -2){
             dp[0][i/2] += 1;
-        }
-        if(A[i] == 0){
-            X[n].push_back(i);
             continue;
         }
-        rep(j,20){
-            if(powmod(2,j).x >= A[i]){
-                X[n-j].push_back(i);
+        if(A[i] == 0) continue;
+        rep(j,30){
+            if(A[i]>>j == 0){
+                int k = j - 1;
+                int p = (1 << n) / (1 << k);
+                if(used[n-j][i/p]){
+                    cout << 0 << endl;
+                    return;
+                }
+                used[n-j][i/p] = true;
+                C[n-j]--;
+                break;
             }
         }
     }
     modint res = 1;
     rep(i,n){
         rep(j,(1<<n)>>(i+1)){
-            res *= dp[i][j];
-            dp[i+1][j/2] += dp[i][j] / 2;
+            if(used[i][j]) {
+                dp[i+1][j/2] += dp[i][j];
+                continue;
+            }
+            res *= dp[i][j] * C[i];
+            C[i]--;
+            dp[i+1][j/2] += dp[i][j] - 1;
         }
     }
+    cout << res << endl;
 }
 
 int main(){
