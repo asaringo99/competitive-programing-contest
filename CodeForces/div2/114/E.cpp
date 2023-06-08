@@ -19,8 +19,26 @@ typedef tuple<ll,ll,ll> TP ;
 #define endl "\n"
 
 void solve(){
-    int n;
-    cin >> n;
+    ll a, b;
+    cin >> a >> b;
+    if(a > b) swap(a,b);
+    if(a == 0){
+        cout << "Second" << endl;
+        return;
+    }
+    bool f = true;
+    while(1){
+        ll d = b % a;
+        ll c = b / a;
+        c %= (a + 1);
+        if(b % a == 0) break;
+        if(c % 2 == 0) break;
+        b = a;
+        a = d;
+        f ^= 1;
+    }
+    if(f) cout << "First" << endl;
+    else cout << "Second" << endl;
 }
 
 int main(){
