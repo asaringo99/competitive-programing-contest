@@ -22,13 +22,14 @@ typedef tuple<ll,ll,ll> TP ;
 #define endl "\n"
 
 void solve(){
-    ll n;
+    int n;
     cin >> n;
 }
 
 int main(){
     fast_io
-    int t;
-    cin >> t;
-    rep(i,t) solve();
+    // int t;
+    // cin >> t;
+    // rep(i,t) solve();
+    solve();
 }
