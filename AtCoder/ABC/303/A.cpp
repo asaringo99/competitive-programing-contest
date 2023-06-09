@@ -22,7 +22,7 @@ typedef tuple<ll,ll,ll> TP ;
 #define all(a) a.begin(), a.end()
 #define endl "\n"
 
-int n ;
+int n;
 
 int main(){
     fast_io
