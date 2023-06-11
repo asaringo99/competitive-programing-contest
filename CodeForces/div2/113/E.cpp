@@ -98,7 +98,7 @@ struct ModInt {
 
 using modint = ModInt< mod >;
 
-template<typename T = ll> struct Matrix{
+template<typename T> struct Matrix{
     int row, col;
     vector<vector<T>> mat ;
 
@@ -198,6 +198,8 @@ template<typename T = ll> struct Matrix{
             vector<vector<T>> res(x,vector<T>(y));
             rep(i,x) rep(j,y) rep(k,n) res[i][j] += mat[i][k] * Y.mat[k][j];
             swap(mat,res);
+            row = x;
+            col = y;
             return *this ;
         }
 
