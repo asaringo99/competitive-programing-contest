@@ -92,8 +92,5 @@ void solve(){
 
 int main(){
     fast_io
-    // int t;
-    // cin >> t;
-    // rep(i,t) solve();
     solve();
 }
