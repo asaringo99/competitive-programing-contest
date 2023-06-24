@@ -38,11 +38,6 @@ int n;
 
 void solve(){
     cin >> n;
-    vector<int> A(n);
-    cin >> A;
-    pt(A);
-    cin >> A;
-    pt(A);
 }
 
 int main(){
