@@ -30,9 +30,61 @@ template<typename T>istream &operator>>(istream&is,vector<vector<T>>&v){for(T &i
 template<typename T>ostream &operator<<(ostream&os,const vector<vector<T>>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?"\n":"");}return os;}
 template<typename T>ostream &operator<<(ostream&os,const set<T>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?" ":"");}return os;}
 
+vector<ll> A, B, C, D;
+
+int H, W, k, T;
+ll d[101][101][404];
+pair<ll,ll> magic[101][101];
+bool isok[101][101];
+
+int dx[] = {0,0,1,-1}, dy[] = {1,-1,0,0};
+
+void bfs(){
+    rep(i,H) rep(j,W) rep(t,404) d[i][j][t] = 1e18;
+    d[0][0][200+T] = 0;
+    using tp = tuple<ll,int,int,int>;
+    priority_queue<tp,vector<tp>,greater<tp>> que;
+    que.push({0,0,0,200+T});
+    while(!que.empty()){
+        auto[dist,x,y,t] = que.top(); que.pop();
+        if(dist > d[x][y][t]) continue;
+        rep(i,4){
+            int nx = x + dx[i], ny = y + dy[i];
+            if(0 > nx || nx >= H || 0 > ny || ny >= W) continue;
+            if(t == 0) continue;
+            if(d[nx][ny][t-1] > d[x][y][t]){
+                d[nx][ny][t-1] = d[x][y][t];
+                que.push({d[nx][ny][t-1],nx,ny,t-1});
+            }
+        }
+        if(!isok[x][y]) continue;
+        auto[c,val] = magic[x][y];
+        int nt = t - 1 + c >= 200 + H + W ? 200 + H + W : t - 1 + c;
+        if(d[x][y][nt] > d[x][y][t] + val){
+            d[x][y][nt] = d[x][y][t] + val;
+            que.push({d[x][y][nt],x,y,nt});
+        }
+    }
+}
+
 void solve(){
-    int n;
-    cin >> n;
+    cin >> H >> W >> k >> T;
+    A = vector<ll>(k);
+    B = vector<ll>(k);
+    C = vector<ll>(k);
+    D = vector<ll>(k);
+    rep(i,k) cin >> A[i] >> B[i] >> C[i] >> D[i];
+    rep(i,k) A[i]--;
+    rep(i,k) B[i]--;
+    rep(i,k){
+        magic[A[i]][B[i]] = {C[i],D[i]};
+        isok[A[i]][B[i]] = true;
+    }
+    bfs();
+    ll res = 1e18;
+    rrep(i,200,403) chmin(res,d[H-1][W-1][i]);
+    if(res == 1e18) res = -1;
+    cout << res << endl;
 }
 
 int main(){

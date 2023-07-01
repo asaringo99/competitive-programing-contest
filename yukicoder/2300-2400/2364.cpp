@@ -31,8 +31,34 @@ template<typename T>ostream &operator<<(ostream&os,const vector<vector<T>>&v){fo
 template<typename T>ostream &operator<<(ostream&os,const set<T>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?" ":"");}return os;}
 
 void solve(){
-    int n;
-    cin >> n;
+    int n, m, W;
+    cin >> n >> m >> W;
+    vector<int> A(n), B(n), C(m), D(m);
+    cin >> A >> B >> C >> D;
+    ll res = 0;
+    vector<vector<ll>> dp(1<<(n+m), vector<ll>(W+1, -1e18));
+    dp[0][0] = 0;
+    rep(S,1<<(n+m)){
+        rep(i,n+m){
+            if(S >> i & 1) continue;
+            int T = S | 1 << i;
+            rep(x,W+1){
+                if(i < n) {
+                    int w = x + A[i];
+                    if(w > W) continue;
+                    chmax(dp[T][w],dp[S][x] + B[i]);
+                    chmax(res,dp[T][w]);
+                }
+                else {
+                    int w = x - C[i-n];
+                    if(w < 0) continue;
+                    chmax(dp[T][w],dp[S][x] - D[i-n]);
+                    chmax(res,dp[T][w]);
+                }
+            }
+        }
+    }
+    cout << res << endl;
 }
 
 int main(){
