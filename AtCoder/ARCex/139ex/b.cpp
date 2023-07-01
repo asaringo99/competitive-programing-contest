@@ -32,10 +32,12 @@ template<typename T>istream &operator>>(istream&is,vector<vector<T>>&v){for(T &i
 template<typename T>ostream &operator<<(ostream&os,const vector<vector<T>>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?"\n":"");}return os;}
 template<typename T>ostream &operator<<(ostream&os,const set<T>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?" ":"");}return os;}
 
-
 void solve(){
-    int n;
-    cin >> n;
+    ll n,a,b,x,y,z;
+    cin >> n >> a >> b >> x >> y >> z;
+    ll p = y - x * a;
+    ll q = z - x * b;
+    
 }
 
 int main(){

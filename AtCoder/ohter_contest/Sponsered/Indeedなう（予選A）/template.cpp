@@ -4,6 +4,8 @@ using namespace std ;
 #pragma GCC optimize("Ofast,no-stack-protector,unroll-loops,fast-math")
 typedef long long ll ;
 typedef long double ld ;
+typedef pair<ll,ll> P ;
+typedef tuple<ll,ll,ll> TP ;
 #define chmin(a,b) a = min(a,b)
 #define chmax(a,b) a = max(a,b)
 #define bit_count(x) __builtin_popcountll(x)
@@ -15,26 +17,6 @@ typedef long double ld ;
 #define rrep(i,a,b) for(int i = a ; i < b ; i++)
 #define repi(it,S) for(auto it = S.begin() ; it != S.end() ; it++)
 #define pt(a) cout << a << endl
-#define ptv(v) for(auto u : v) cout << u << " "; cout << endl
 #define debug(a) cout << #a << " " << a << endl
 #define all(a) a.begin(), a.end()
 #define endl "\n"
-
-void solve(){
-    using ull = unsigned long long ;
-    ull res = 0;
-    rep(i,64){
-        int a;
-        cin >> a;
-        res += ((ll)1 << i) * a;
-    }
-    cout << res << endl;
-}
-
-int main(){
-    fast_io
-    // int t;
-    // cin >> t;
-    // rep(i,t) solve();
-    solve();
-}

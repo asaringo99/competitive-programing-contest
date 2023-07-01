@@ -32,15 +32,12 @@ template<typename T>istream &operator>>(istream&is,vector<vector<T>>&v){for(T &i
 template<typename T>ostream &operator<<(ostream&os,const vector<vector<T>>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?"\n":"");}return os;}
 template<typename T>ostream &operator<<(ostream&os,const set<T>&v){for(auto it=v.begin();it!=v.end();){os<<*it<<((++it)!=v.end()?" ":"");}return os;}
 
-
-void solve(){
-    int n;
-    cin >> n;
-}
+int n, x, y;
 
 int main(){
-    fast_io
-    int t;
-    cin >> t;
-    rep(i,t) solve();
+    int n = 5;
+    auto A = v2(5,6,3);
+    cout << A << endl;
+    auto S = set<int>{1,2,3,4,4,4,4,4,5};
+    cout << S << endl;
 }
