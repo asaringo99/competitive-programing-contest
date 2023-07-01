@@ -37,15 +37,19 @@ ABCDEFGitems=(
     $ABC_PATH
     $ARC_PATH
     $AGC_PATH
+    $DIV1_PATH
+    $DIV2_PATH
+    $DIV3_PATH
+    $ECR_PATH
 )
 
 for item in "${ABCDEFGitems[@]}";
 do
-    cp $item/template/template.cpp $item/template/a.cpp
-    cp $item/template/template.cpp $item/template/b.cpp
-    cp $item/template/template.cpp $item/template/c.cpp
-    cp $item/template/template.cpp $item/template/d.cpp
-    cp $item/template/template.cpp $item/template/e.cpp
-    cp $item/template/template.cpp $item/template/f.cpp
-    cp $item/template/template.cpp $item/template/g.cpp
+    cp -r $cppath/template.cpp $item/template/A.cpp
+    cp -r $cppath/template.cpp $item/template/B.cpp
+    cp -r $cppath/template.cpp $item/template/C.cpp
+    cp -r $cppath/template.cpp $item/template/D.cpp
+    cp -r $cppath/template.cpp $item/template/E.cpp
+    cp -r $cppath/template.cpp $item/template/F.cpp
+    cp -r $cppath/template.cpp $item/template/G.cpp
 done
