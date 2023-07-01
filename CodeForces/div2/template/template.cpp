@@ -4,8 +4,6 @@ using namespace std ;
 #pragma GCC optimize("Ofast,no-stack-protector,unroll-loops,fast-math")
 typedef long long ll ;
 typedef long double ld ;
-typedef pair<ll,ll> P ;
-typedef tuple<ll,ll,ll> TP ;
 #define chmin(a,b) a = min(a,b)
 #define chmax(a,b) a = max(a,b)
 #define bit_count(x) __builtin_popcountll(x)

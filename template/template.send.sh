@@ -8,6 +8,10 @@ AGC_PATH=$cppath/../AtCoder/AGC
 ABCex_PATH=$cppath/../AtCoder/ABCex
 ARCex_PATH=$cppath/../AtCoder/ARCex
 AGCex_PATH=$cppath/../AtCoder/AGCex
+DIV1_PATH=$cppath/../CodeForces/div1
+DIV2_PATH=$cppath/../CodeForces/div2
+DIV3_PATH=$cppath/../CodeForces/div3
+ECR_PATH=$cppath/../CodeForces/ECR
 
 items=(
     $ABC_PATH
@@ -16,6 +20,10 @@ items=(
     $ABCex_PATH
     $ARCex_PATH
     $AGCex_PATH
+    $DIV1_PATH
+    $DIV2_PATH
+    $DIV3_PATH
+    $ECR_PATH
 )
 
 for item in "${items[@]}";
