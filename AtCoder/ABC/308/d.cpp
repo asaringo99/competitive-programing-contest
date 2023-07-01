@@ -37,7 +37,8 @@ void solve(){
 
 int main(){
     fast_io
-    int t = 1;
+    // int t;
     // cin >> t;
-    rep(i,t) solve();
+    // rep(i,t) solve();
+    solve();
 }
