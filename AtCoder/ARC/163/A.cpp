@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
-using namespace std;
+using namespace std ;
 #define fast_io ios::sync_with_stdio(false); cin.tie(nullptr);
 #pragma GCC optimize("Ofast,no-stack-protector,unroll-loops,fast-math")
-typedef long long ll;
-typedef long double ld;
-#define chmin(a,b) a = min(a,b);
-#define chmax(a,b) a = max(a,b);
+typedef long long ll ;
+typedef long double ld ;
+#define chmin(a,b) a = min(a,b)
+#define chmax(a,b) a = max(a,b)
 #define bit_count(x) __builtin_popcountll(x)
 #define leading_zero_count(x) __builtin_clz(x)
 #define trailing_zero_count(x) __builtin_ctz(x)
@@ -14,10 +14,10 @@ typedef long double ld;
 #define rep(i,n) for(int i = 0 ; i < n ; i++)
 #define rrep(i,a,b) for(int i = a ; i < b ; i++)
 #define repi(it,S) for(auto it = S.begin() ; it != S.end() ; it++)
-#define pt(a) cout << a << endl;
-#define debug(a) cout << #a << " " << a << endl;
+#define pt(a) cout << a << endl
+#define debug(a) cout << #a << " " << a << endl
 #define all(a) a.begin(), a.end()
-#define endl "\n";
+#define endl "\n"
 #define v1(n,a) vector<ll>(n,a)
 #define v2(n,m,a) vector<vector<ll>>(n,v1(m,a))
 #define v3(n,m,k,a) vector<vector<vector<ll>>>(n,v2(m,k,a))
@@ -33,13 +33,34 @@ template<typename T>ostream &operator<<(ostream&os,const multiset<T>&v){for(auto
 
 void solve(){
     int n;
+    string S;
     cin >> n;
-    cout << gcd(3,4) << endl;
+    cin >> S;
+    rrep(i,1,n){
+        if(S[0] < S[i]){
+            cout << "Yes" << endl ;
+            return;
+        }
+    }
+    vector<int> I;
+    rrep(i,1,n) if(S[i] == S[0]) I.push_back(i);
+    for(int k : I){
+        bool ok = true;
+        string s = "";
+        string t = "";
+        rrep(j,0,k) s += S[j];
+        rrep(j,k,n) t += S[j];
+        if(s < t){
+            cout << "Yes" << endl ;
+            return;
+        }
+    }
+    cout << "No" << endl ;
 }
 
 int main(){
     fast_io
     int t = 1;
-    // cin >> t;
+    cin >> t;
     rep(i,t) solve();
 }
