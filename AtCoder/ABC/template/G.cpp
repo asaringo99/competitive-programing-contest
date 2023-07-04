@@ -34,7 +34,6 @@ template<typename T>ostream &operator<<(ostream&os,const multiset<T>&v){for(auto
 void solve(){
     int n;
     cin >> n;
-    cout << gcd(3,4) << endl;
 }
 
 int main(){
